@@ -1,0 +1,5 @@
+permissions:
+  contents: write        # Needed to push commits or create releases
+  pull-requests: write   # Needed to comment on or modify PRs
+  issues: write          # Needed to create or comment on issues
+  actions: read          # Needed to read workflow runs
