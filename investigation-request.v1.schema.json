@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Investigation Request v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "incidentId",
+    "correlationId",
+    "failureEvent",
+    "evidence"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "incidentId": {
+      "type": "string"
+    },
+    "correlationId": {
+      "type": "string"
+    },
+    "failureEvent": {
+      "$ref": "failure-event.v1.schema.json"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "summary"
+        ],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "timestamp": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "knownIssueMatches": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

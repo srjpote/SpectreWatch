@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Investigation Response v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "classification",
+    "rootCause",
+    "confidence",
+    "evidenceRefs",
+    "recommendedAction",
+    "requiresHumanReview"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "classification": {
+      "enum": [
+        "business_exception",
+        "credentials",
+        "timeout",
+        "system_error",
+        "unknown"
+      ]
+    },
+    "rootCause": {
+      "type": "string",
+      "maxLength": 4000
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendedAction": {
+      "enum": [
+        "notify_business",
+        "connection_owner",
+        "recovery_review",
+        "coding_proposal",
+        "human_review"
+      ]
+    },
+    "requiresHumanReview": {
+      "type": "boolean"
+    },
+    "knowledgeArticleId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
